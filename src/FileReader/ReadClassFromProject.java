@@ -23,20 +23,16 @@ public class ReadClassFromProject {
 		
 		while( (statement = br.readLine() ) !=null) {
 			
-			if(!statement.trim().isEmpty()) statementListOfAClass.add(new Statement(statement, statementLineNumber++ ));
-			//System.out.println(statement+"   "+statement.length());
+			if(!statement.trim().isEmpty()) statementListOfAClass.add(new Statement(statement.trim(), statementLineNumber ));
+			
+			statementLineNumber++;
+
 		}
 		
 		br.close();
 		
 		return statementListOfAClass;
 	}
-	/*	
-	public void printStatements() {
-		
-		for(Statement statement: statementListOfAClass) System.out.println(statement.getStatement()+"   "+statement.getStatement().length());
-		
-	}*/
 	
 	
 }

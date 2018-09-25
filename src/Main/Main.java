@@ -14,9 +14,9 @@ public class Main {
 		
 		//rcfp.printStatements();
 		
-		Analyzer a = new Analyzer();
+		Analyzer a = new Analyzer( rcfp.readStatementsFromAClass("F:\\EclipseWork\\Cyclometic_Complexity\\src\\input\\code.java") );
 		
-		a.startStatementAnalysis(rcfp.readStatementsFromAClass("F:\\EclipseWork\\Cyclometic_Complexity\\src\\input\\code.java") );
+		a.startStatementAnalysis( );
 		
 	}
 	

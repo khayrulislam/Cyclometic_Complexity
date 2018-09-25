@@ -24,4 +24,12 @@ public class Utils {
 	
 	public static final String LOOP = "LOOP";
 	
+	public static final String START_OF_SINGLE_LINE_COMMENT = "//";
+	
+	public static final String SINGLE_LINE_COMMENT_REGEX = "//.*";
+	
+	public static final String START_OF_MULTI_LINE_COMMENT = "/*";
+	
+	public static final String END_OF_MULTI_LINE_COMMENT = "*/";
+	
 }
