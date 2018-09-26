@@ -15,10 +15,43 @@ public class RemoveComments {
 
 	public void removeAllTheCommentFromStatementList() {
 
+		removeAllTheStatementBeforeClassBlock();
+		
 		removeSingleLineComment();
 
 		removeMultiLineComment();
+		
+		removeExtraSpaceInAStatement();
 
+	}
+	
+	private void removeExtraSpaceInAStatement() {
+		
+		for(int i=0;i<statementListOfAClass.size();i++) {
+			
+			statementListOfAClass.get(i).setStatement( statementListOfAClass.get(i).getStatement().replaceAll("\\s+", " ") );
+			
+		}
+		
+	}
+
+	private void removeAllTheStatementBeforeClassBlock() {
+		
+		
+		for(int i=0;i<statementListOfAClass.size();i++) {
+			
+			if( statementContainClassKeyWord( statementListOfAClass.get(i) ) ) break;
+			statementListOfAClass.remove(statementListOfAClass.get(i));
+			i--;
+		}
+		
+		
+	}
+
+	private boolean statementContainClassKeyWord(Statement statement) {
+	
+		return statement.getStatement().contains("class");
+		
 	}
 
 	private void removeSingleLineComment() {
@@ -125,11 +158,11 @@ public class RemoveComments {
 
 	}
 
-	public void printStatements() {
+/*	public void printStatements() {
 
 		for (Statement statement : statementListOfAClass)
 			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement());
 
-	}
+	}*/
 
 }

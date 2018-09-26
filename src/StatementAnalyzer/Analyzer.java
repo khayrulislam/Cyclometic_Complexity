@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import CommentAnalyzer.RemoveComments;
 import FileReader.Statement;
+import MethodAnalyzer.ExtractMethods;
 
 public class Analyzer {
 
@@ -19,12 +20,17 @@ public class Analyzer {
 		rc.removeAllTheCommentFromStatementList();
 
 		printStatements();
+		
+		ExtractMethods em = new ExtractMethods(statementListOfAClass);
+		em.splitMethodsFromClass();
+		
+		printStatements();
 	}
 
 	public void printStatements() {
 
 		for (Statement statement : statementListOfAClass)
-			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement());
+			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement()+"----");
 
 	}
 }
