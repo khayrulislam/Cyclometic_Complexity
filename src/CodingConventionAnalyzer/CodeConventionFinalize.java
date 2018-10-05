@@ -1,29 +1,21 @@
-package MethodAnalyzer;
+package CodingConventionAnalyzer;
 
 import java.util.ArrayList;
 
 import FileReader.Statement;
 
-public class ExtractMethods {
+public class CodeConventionFinalize {
 
+	
 	ArrayList<Statement> statementListOfAClass = new ArrayList<>();
 
-	public ExtractMethods(ArrayList<Statement> statementListOfAClass) {
+	public CodeConventionFinalize(ArrayList<Statement> statementListOfAClass) {
 
 		this.statementListOfAClass = statementListOfAClass;
 		
 	}
 	
-	public void splitMethodsFromClass() {
-		
-		//mergeStatements();
-		finalizeBracketInStatement();
-		
-		
-	}
-	
-	
-	public void finalizeBracketInStatement(){
+	public void finalizeTheConvention() {
 		
 		int startIndex;
 		
@@ -45,10 +37,8 @@ public class ExtractMethods {
 			}
 			
 		}
-		
 	}
 	
-
 	private void spliteBracketFromStatement(int i, int startIndex) {
 		
 		if(startIndex==0)startIndex++;
@@ -66,46 +56,5 @@ public class ExtractMethods {
 		return statement.getStatement().contains(bracket);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*private boolean isStatementEnd(Statement statement) {
-		
-		char lastChar;
-		
-		lastChar = statement.getStatement().charAt(statement.getStatement().length()-1);
-		
-		if(lastChar==';' || lastChar=='}' || lastChar=='{' ||  lastChar==')') return true;
-		
-		return false;
-	}
-	
-
-	private void mergeStatements() {
-		
-		for(int i=0;i<statementListOfAClass.size();i++) {
-			
-			if(! isStatementEnd(statementListOfAClass.get(i)) ) {
-				
-				statementListOfAClass.get(i).setStatement(statementListOfAClass.get(i).getStatement()+" "+statementListOfAClass.get(i+1).getStatement());
-				
-				statementListOfAClass.remove(i+1);
-				
-				i--;
-			}
-			
-		}
-		
-		
-	}
-
-	
-*/	
 	
 }

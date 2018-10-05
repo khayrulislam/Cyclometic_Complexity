@@ -2,8 +2,8 @@ package Main;
 
 import java.io.IOException;
 
+import ComplexityAnalyzer.Analyzer;
 import FileReader.ReadClassFromProject;
-import StatementAnalyzer.Analyzer;
 
 public class Main {
 

@@ -14,12 +14,25 @@ public class RemoveComments {
 	}
 
 	public void removeAllTheCommentFromStatementList() {
-
-		removeAllTheStatementBeforeClassBlock();
 		
-		removeSingleLineComment();
+		for (int i = 0; i < statementListOfAClass.size(); i++) {
 
-		removeMultiLineComment();
+			if (isStatementContains(Utils.START_OF_SINGLE_LINE_COMMENT, statementListOfAClass.get(i))) {
+
+				removeSingleLineCommentFromStatement(statementListOfAClass.get(i));
+
+				if (removeStatementIfEmpty(statementListOfAClass.get(i)))
+					i--;
+
+			}
+			
+			if (isStatementContains(Utils.START_OF_MULTI_LINE_COMMENT, statementListOfAClass.get(i))) {
+
+				removeAllTheCommentInABlock(i);
+
+			}
+
+		}
 		
 		removeExtraSpaceInAStatement();
 
@@ -33,42 +46,6 @@ public class RemoveComments {
 			
 		}
 		
-	}
-
-	private void removeAllTheStatementBeforeClassBlock() {
-		
-		
-		for(int i=0;i<statementListOfAClass.size();i++) {
-			
-			if( statementContainClassKeyWord( statementListOfAClass.get(i) ) ) break;
-			statementListOfAClass.remove(statementListOfAClass.get(i));
-			i--;
-		}
-		
-		
-	}
-
-	private boolean statementContainClassKeyWord(Statement statement) {
-	
-		return statement.getStatement().contains("class");
-		
-	}
-
-	private void removeSingleLineComment() {
-
-		for (int i = 0; i < statementListOfAClass.size(); i++) {
-
-			if (isStatementContains(Utils.START_OF_SINGLE_LINE_COMMENT, statementListOfAClass.get(i))) {
-
-				removeSingleLineCommentFromStatement(statementListOfAClass.get(i));
-
-				if (removeStatementIfEmpty(statementListOfAClass.get(i)))
-					i--;
-
-			}
-
-		}
-
 	}
 
 	private boolean removeStatementIfEmpty(Statement statement) {
@@ -88,20 +65,6 @@ public class RemoveComments {
 	private void removeSingleLineCommentFromStatement(Statement statement) {
 
 		statement.setStatement(statement.getStatement().replaceFirst(Utils.SINGLE_LINE_COMMENT_REGEX, ""));
-
-	}
-
-	private void removeMultiLineComment() {
-
-		for (int i = 0; i < statementListOfAClass.size(); i++) {
-
-			if (isStatementContains(Utils.START_OF_MULTI_LINE_COMMENT, statementListOfAClass.get(i))) {
-
-				removeAllTheCommentInABlock(i);
-
-			}
-
-		}
 
 	}
 

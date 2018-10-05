@@ -1,7 +1,8 @@
-package StatementAnalyzer;
+package ComplexityAnalyzer;
 
 import java.util.ArrayList;
 
+import CodingConventionAnalyzer.CodeConventionFinalize;
 import CommentAnalyzer.RemoveComments;
 import FileReader.Statement;
 import MethodAnalyzer.ExtractMethods;
@@ -19,18 +20,21 @@ public class Analyzer {
 		RemoveComments rc = new RemoveComments(statementListOfAClass);
 		rc.removeAllTheCommentFromStatementList();
 
-		printStatements();
+		//printStatements();
+
+		CodeConventionFinalize ccf = new CodeConventionFinalize(statementListOfAClass);
+		ccf.finalizeTheConvention();
 		
-		ExtractMethods em = new ExtractMethods(statementListOfAClass);
-		em.splitMethodsFromClass();
-		
+		//ExtractMethods em = new ExtractMethods(statementListOfAClass);
+		//em.splitMethodsFromClass();
+
 		printStatements();
 	}
 
 	public void printStatements() {
 
 		for (Statement statement : statementListOfAClass)
-			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement()+"----");
+			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement() + "----");
 
 	}
 }

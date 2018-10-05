@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ReadClassFromProject {
 
@@ -23,7 +21,7 @@ public class ReadClassFromProject {
 		
 		while( (statement = br.readLine() ) !=null) {
 			
-			if(!statement.trim().isEmpty()) statementListOfAClass.add(new Statement(statement.trim(), statementLineNumber ));
+			if(!statement.trim().isEmpty() && !isExtrnalStatement(statement) ) statementListOfAClass.add(new Statement(statement.trim(), statementLineNumber ));
 			
 			statementLineNumber++;
 
@@ -32,6 +30,17 @@ public class ReadClassFromProject {
 		br.close();
 		
 		return statementListOfAClass;
+	}
+	
+	
+	private boolean isExtrnalStatement(String statement) {
+				
+		if( statement.contains("package") && statement.indexOf("package") == 0 ) return true;
+		
+		if( statement.contains("import") && statement.indexOf("import") == 0 ) return true;
+			
+		return false;
+		
 	}
 	
 	
