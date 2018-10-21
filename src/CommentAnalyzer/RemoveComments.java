@@ -14,7 +14,7 @@ public class RemoveComments {
 	}
 
 	public void removeAllTheCommentFromStatementList() {
-		
+
 		for (int i = 0; i < statementListOfAClass.size(); i++) {
 
 			if (isStatementContains(Utils.START_OF_SINGLE_LINE_COMMENT, statementListOfAClass.get(i))) {
@@ -25,7 +25,7 @@ public class RemoveComments {
 					i--;
 
 			}
-			
+
 			if (isStatementContains(Utils.START_OF_MULTI_LINE_COMMENT, statementListOfAClass.get(i))) {
 
 				removeAllTheCommentInABlock(i);
@@ -33,19 +33,20 @@ public class RemoveComments {
 			}
 
 		}
-		
+
 		removeExtraSpaceInAStatement();
 
 	}
-	
+
 	private void removeExtraSpaceInAStatement() {
-		
-		for(int i=0;i<statementListOfAClass.size();i++) {
-			
-			statementListOfAClass.get(i).setStatement( statementListOfAClass.get(i).getStatement().replaceAll("\\s+", " ") );
-			
+
+		for (int i = 0; i < statementListOfAClass.size(); i++) {
+
+			statementListOfAClass.get(i)
+					.setStatement(statementListOfAClass.get(i).getStatement().replaceAll("\\s+", " "));
+
 		}
-		
+
 	}
 
 	private boolean removeStatementIfEmpty(Statement statement) {
@@ -96,14 +97,15 @@ public class RemoveComments {
 
 				startIndex = 0;
 
-				if ( ! removeStatementIfEmpty(statementListOfAClass.get(i))) i++;
+				if (!removeStatementIfEmpty(statementListOfAClass.get(i)))
+					i++;
 			}
 
 		}
 	}
 
 	private void removeMultiLineComment(Statement statement, int startIndex, int endIndex) {
-		
+
 		statement.setStatement(
 				statement.getStatement().replace(statement.getStatement().substring(startIndex, endIndex), ""));
 
@@ -121,11 +123,14 @@ public class RemoveComments {
 
 	}
 
-/*	public void printStatements() {
-
-		for (Statement statement : statementListOfAClass)
-			System.out.println(statement.getStatementLineNumber() + " " + statement.getStatement());
-
-	}*/
+	/*
+	 * public void printStatements() {
+	 * 
+	 * for (Statement statement : statementListOfAClass)
+	 * System.out.println(statement.getStatementLineNumber() + " " +
+	 * statement.getStatement());
+	 * 
+	 * }
+	 */
 
 }

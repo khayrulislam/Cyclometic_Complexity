@@ -32,6 +32,7 @@ class code {
 		int min;
 		if (n1 > n2){min = n2;}
 			
+		else if (true) min=21;
 		else
 			min = n1;
 		/* gdgdf */
@@ -55,5 +56,17 @@ class code {
 		} else {
 			System.out.println("Rank:A3");
 		}
+	}
+	
+	
+
+	private void spliteSingleLineStatement(int i) {
+		
+		if( isStatementContains(.get(i), ) ||isStatementContains(statementListOfAClass.get(i), "") || 
+			isStatementContains(statementListOfAClass.get(i), "") || 
+			isStatementContains(statementListOfAClass.get(i), "") ) spliteCurrentStatement("(",1,i);
+		
+		else if (isStatementContains(statementListOfAClass.get(i), "")) spliteCurrentStatement("",4,i);
+		
 	}
 }

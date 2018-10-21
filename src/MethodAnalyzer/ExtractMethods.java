@@ -17,7 +17,7 @@ public class ExtractMethods {
 	public void splitMethodsFromClass() {
 		
 		//mergeStatements();
-		finalizeBracketInStatement();
+		//finalizeBracketInStatement();
 		
 		
 	}
